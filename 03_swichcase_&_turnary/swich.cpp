@@ -12,7 +12,7 @@ cin >> a >> b;
 
 (a > b)? cout << "a is maximum" : cout << "b is maximum" << endl;
 
-//  Swich case  
+//  Swich case   
     int chioce, type;
     cout << "enter 1 for pizza" << endl;
     cout << "enter 2 for sandwich" << endl;
