@@ -1,66 +1,49 @@
 #include <iostream>
 using namespace std;
 
-int main()
-{
+int main() {
+    //  Stap - 1 
+    int mark;
+    cout << "Enter your Mark out of 100: ";
+    cin >> mark;
+
+    
+    char grade = (mark >= 90) ? 'A' : (mark >= 80) ? 'B' : (mark >= 70) ? 'C' : (mark >= 60) ? 'D' :(mark >= 50) ? 'E' : 'F';
+
+    cout << "Your grade is: " << grade << endl;
+
+    //  Stap - 2
+
+    switch(grade) {
+        case 'A':
+            cout << "Excellent work!" << endl;
+            break;
+        case 'B':
+            cout << "Well done!" << endl;
+            break;
+        case 'C':
+            cout << "Good job!" << endl;
+            break;
+        case 'D':
+            cout << "You passed" << endl;
+            break;
+        case 'F':
+            cout << "Sorry, you failed." << endl;
+            break;
+        default:
+            cout << "Invalid grade." << endl;
+            break;
+    }
 
 
-int mark;
-cout << "Enter your mark " << endl;
-cin >> mark;
- 
-if(mark <= 100 && mark > 90){
-    cout << "A" << endl;
- }
- else if( mark <=90 && mark > 80){
-    cout << "B" << endl;
- }
- else if( mark <=80 && mark > 60){
-    cout << "C" << endl;
- }
- else if( mark <=60 && mark >= 35){
-    cout << "D" << endl;
- }
- else if( mark < 35){
-    cout << "F" << endl;
- }
+// Stap - 3
 
+       cout << "Your grade is: " << grade << endl;
+    if (grade == 'A' || grade == 'B' || grade == 'C' || grade == 'D') {
+        cout << "Congratulations! You are eligible for the next level." << endl;
+    } else if (grade == 'F') {
+        cout << "Please try again next time." << endl;
+    }
 
-int gread;
-
-cout << "Enter Gread" << endl;
-cin >> gread;
-
-switch (gread)
-{
-case 'A':
-    cout << "Excellent Work" << endl;
-    break;
-case 'B':
-    cout << "Well Done" << endl;
-    break;
-case 'C':
-    cout << "Good Job" << endl;
-    break;
-case 'D':
-    cout << "You Passed" << endl;
-    break;
-case 'F':
-    cout << "Sorry , you failed" << endl;
-    break;
-
-default:
-  cout << "Invalid gread" << endl;
-    break;
-}
-
-
-if('A' && 'B' && 'C' && 'D'){
-    cout << "Congratulation ! You are eligible for the next levels "<< endl ;
-}
-else if('F') {
-    cout << "Please try again next time" << endl;
-
-}
-
+    return 0;
 }
