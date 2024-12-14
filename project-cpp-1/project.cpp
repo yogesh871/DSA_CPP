@@ -56,7 +56,7 @@ default:
 
 
 if('A' && 'B' && 'C' && 'D'){
-    cout << "Congratulation ! You are eligible for the next level "<< endl ;
+    cout << "Congratulation ! You are eligible for the next levels "<< endl ;
 }
 else if('F') {
     cout << "Please try again next time" << endl;
