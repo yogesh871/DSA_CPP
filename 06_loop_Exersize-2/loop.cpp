@@ -5,35 +5,36 @@ int main()
 {
 
 //  Multiplication of number 
+{
+int  i, num;
 
-// int  i, num;
+cout << "Enter a Number: " << endl;
+cin >> num;
 
-// cout << "Enter a Number: " << endl;
-// cin >> num;
+for(i =1; i <= 10; i++){
 
-// for(i =1; i <= 10; i++){
-
-//    cout << num << " x " << i << " = " << num*i << endl; 
-// }
+   cout << num << " x " << i << " = " << num*i << endl; 
+}
+}
 
   
 
 //  sum of all digit 
+{
+int sum, num , lastdigit;
 
-// int sum, num , lastdigit;
+sum = 0;
 
-// sum = 0;
+cout << "Enter a number : ";
+cin >> num;
 
-// cout << "Enter a number : ";
-// cin >> num;
-
-// while(num > 0){
-//     lastdigit = num % 10;
-//     sum = sum + lastdigit;
-//     num = num / 10;
-// }
-
-// cout << "sum all digit: " << sum << endl;
+while(num > 0){
+    lastdigit = num % 10;
+    sum = sum + lastdigit;
+    num = num / 10;
+}
+cout << "sum all digit: " << sum << endl;
+}
 
 
 
@@ -56,5 +57,5 @@ while (num >= 10)
  sum = firstdigit + lastdigit;
 
  cout << " Sum of firstdigit & lastdigit  " << sum << endl;
-// return 0;
+
 }
