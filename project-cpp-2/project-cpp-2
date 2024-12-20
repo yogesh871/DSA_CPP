@@ -1,0 +1,58 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  {
+//      Question no .1 => Develop a program that prints all alphabets from ‘a’ to ‘z’ by skipping 3 alphabets using
+// a do-while loop.
+
+
+    char i = 'a';
+
+    do
+    {
+      cout << i << endl;
+      i+4;
+    } while (i <= 'z');
+  }
+    
+
+    //  Question No.2 => Develop a Program to count the total number of digits in a number.
+{
+int total, num , lastdigit;
+
+total = 0;
+
+cout << "Enter a number : ";
+cin >> num;
+
+while(num > 0){
+    lastdigit = num % 10;
+    total = total + lastdigit;
+    num = num / 10;
+}
+cout << "sum all digit: " << total << endl;
+}
+
+
+
+//  Question no.3 =>  Develop a Program to find the sum of a number's first and last digits.
+{
+
+int sum, num, firstdigit, lastdigit;
+
+cout << "Enter a number: " << endl;
+cin >> num;
+
+lastdigit = num % 10;
+while (num >= 10)
+{
+    num = num / 10;
+}
+ firstdigit = num;
+ sum = firstdigit + lastdigit;
+ cout << " Sum of firstdigit & lastdigit  " << sum << endl;
+}
+ 
+}
