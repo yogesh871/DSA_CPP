@@ -25,6 +25,23 @@ int main(){
 }
 
 {
+  //  Question - 2 => Develop a Program to count the total number of digits in a number. 
+
+    int number;
+    int count = 0;
+ 
+     cout << " Enter Your Number:" << endl;
+    cin >> number;
+
+    while (number != 0) {
+        number /= 10;
+        ++count;
+    }
+
+    cout << "Number of digits: " << count << endl;
+}
+
+{
 //  Question no.3 =>  Develop a Program to find the sum of a number's first and last digits.
 
 int sum, num, firstdigit, lastdigit;
@@ -42,31 +59,6 @@ while (num >= 10)
  cout << " Sum of firstdigit & lastdigit  " << sum << endl;
  
 }
-
-{
-  //  Question - 2 => Develop a Program to count the total number of digits in a number. 
-
-int countDigits(int num);
-   int num = abs(num);
-    int digitCount = 0;
-    do {
-        num /= 10;
-        digitCount++;
-    } while (num > 0);
-
-    return digitCount;
-
-    int userInput;
-
-    cout << "Enter any number: ";
-    cin >> userInput;
-
-    int result = countDigits(userInput);
-    cout << "Total number of digits: " << result << endl;
-
-    return 0;
-}
-
 }
 
 
