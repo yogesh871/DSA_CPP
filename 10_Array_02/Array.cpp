@@ -3,6 +3,27 @@ using namespace std;
 
 int main()
 {
+    //  Avarage of this array
+    {
+        int n, i;
+        cout << "Enter the size of the array: ";
+        cin >> n;
+        int *a = new int[n];
+
+        for (int i = 0; i < n; i++)
+        {
+            cout << "Enter a value for array A  [" << i << "] ";
+            cin >> a[i];
+        }
+        int sum = 0;
+        for (int i = 0; i < n; i++)
+        {
+            sum += a[i];
+        }
+        int average = sum / n;
+        cout << "The average is: " << average << endl;
+    }
+
     // sum of two Array and store to another array :
 
     int size, i;
@@ -12,6 +33,7 @@ int main()
     int a[size];
     int b[size];
     int c[size];
+    
     for (int i = 0; i < size; i++)
     {
         cout << "Enter a value for array A  [" << i << "] ";
@@ -26,10 +48,9 @@ int main()
 
     for (int i = 0; i < size; i++)
     {
-    
+
         c[i] = a[i] + b[i];
     }
-
 
     cout << "Array values c: ";
     for (int i = 0; i < size; i++)
@@ -40,8 +61,3 @@ int main()
 
     return 0;
 }
-
-
-
-
-      
