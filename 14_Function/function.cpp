@@ -15,6 +15,16 @@ using namespace std;
             cout << word << endl;
     }
 
+    //  - No Argument With Return 
+    int add () {
+           return 55;
+    }
+
+    //  - No Argument With Return 
+    int addition (int a, int b) {
+           return  a * b;
+    }
+
 int main()
 {
 
@@ -22,6 +32,9 @@ int main()
     hello();
     some ("2. With Argument No Return ");
     anything();
+    cout << add() << endl;
+    cout << addition(3,5) << endl;
+
 
 }
 
