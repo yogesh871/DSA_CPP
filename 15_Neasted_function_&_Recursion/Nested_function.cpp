@@ -6,7 +6,7 @@ using namespace std;
     }
 
      void vivek () {
-        cout << " i am vivek" << endl;
+        cout << " i am vivek"  << endl;
         jenish ();
      }
 int main() {
