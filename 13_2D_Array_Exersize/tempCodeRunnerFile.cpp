@@ -1,4 +1,6 @@
-if (r < 5 || c < 5) {
-    //     cout << "Error: Rows and columns must be at least 5 for this operation." << endl;
-    //     return 1;
+ // cout << "Enter the elements of the array:" << endl;
+    // for (int i = 0; i < r; ++i) {
+    //     for (int j = 0; j < c; ++j) {
+    //         cin >> a[i][j];
+    //     }
     // }

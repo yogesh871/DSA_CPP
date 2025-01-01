@@ -176,5 +176,59 @@ int main()
             cout << endl;
         }
     }
+
+    //  Q - 5
+    cout << "print row-wise  & Column-Wise sum  " << endl;
+    int r, c;
+
+    cout << "Enter rows size: ";
+    cin >> r;
+
+    cout << "Enter columns size: ";
+    cin >> c;
+
+    int a[r][c];
+
+    // Input for the 2D array
+
+    for (int i = 0; i < r; ++i)
+    {
+        for (int j = 0; j < c; ++j)
+        {
+            cout << "Enter a[" << i << "][" << j << "]: ";
+            cin >> a[i][j];
+        }
+    }
+
+    // Calculate and print row-wise sum
+    cout << "Row-wise sums:" << endl;
+    for (int i = 0; i < r; ++i)
+    {
+        int rowSum = 0;
+        for (int j = 0; j < c; ++j)
+        {
+            rowSum += a[i][j];
+        }
+        cout << "Row " << i + 1 << ": " << rowSum << endl;
+    }
+
+    // Calculate and print column-wise sum
+    cout << "Column-wise sums:" << endl;
+    for (int j = 0; j < c; ++j)
+    {
+        int colSum = 0;
+        for (int i = 0; i < r; ++i)
+        {
+            colSum += a[i][j];
+        }
+        cout << "Column " << j + 1 << ": " << colSum << endl;
+    }
+
+    // Deallocate the memory
+    // for (int i = 0; i < rows; ++i) {
+    //     delete[] arr[i];
+    // }
+    // delete[] arr;
+
     return 0;
 }
