@@ -1,88 +1,132 @@
 #include <iostream>
 using namespace std;
 
-class BankAccount
-{
+
+class BankAccount {
+protected:
+    int accountNumber;
+    string accountHolderName;
+    double balance;
+
 public:
-      int accountNumber = 900073200001997;
-      double balance = 54000;
-      double addamount = 12000;
-      double removeAmount = 8000;
-      double totalAmount;
-      double finalAmount;
+    BankAccount(int accNum, string accHolderName, double initBalance)
+        : accountNumber(accNum), accountHolderName(accHolderName), balance(initBalance) {}
 
-        void deposit(){
-            cout << "balance: " << balance << endl;
-            cout << "Added Amount is: " << addamount << endl;
+    virtual void deposit(double amount) {
+        balance += amount;
+        cout << "Deposited: " << amount << ". New Balance: " << balance << endl;
+    }
 
-              totalAmount = balance + addamount;
-              cout << "balance : " << totalAmount <<endl;
+    virtual void withdraw(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+            cout << "Withdrew: " << amount << ". New Balance: " << balance << endl;
+        } else {
+            cout << "Insufficient funds!" << endl;
         }
+    }
 
-        void withdraw(){
-            cout << " removed Amount is:" << removeAmount << endl;
-           finalAmount =  totalAmount  - removeAmount;
-        };
+    double getBalance() const {
+        return balance;
+    }
 
-        void getBalance(){
-            cout << "balance : " <<  finalAmount << endl;
-        }
+    virtual void displayAccountInfo() const {
+        cout << "Account Number: " << accountNumber << endl;
+        cout << "Account Holder: " << accountHolderName << endl;
+        cout << "Balance: " << balance << endl;
+    }
 
-        void display() {
-            cout <<"Account Number : " <<  accountNumber << endl;
-            cout << "Account Holder Name " << endl; 
-            cout << " balance :" << finalAmount << endl;
-        }
+    virtual ~BankAccount() {}
 };
 
-class Saving : public BankAccount{
- public: 
 
- double  finalbalance = finalAmount;
+class SavingsAccount : public BankAccount {
+private:
+    double interestRate; 
 
- double  interestRate;
+public:
+    SavingsAccount(int accNum, string accHolderName, double initBalance, double rate)
+        : BankAccount(accNum, accHolderName, initBalance), interestRate(rate) {}
 
-     void calculateInterest(){
-        interestRate  =  (58000 * 2 * 2)/100 ; 
-        cout << "your interestRate" << interestRate << endl;
-
- 
+    void calculateInterest() {
+        double interest = balance * (interestRate / 100);
+        cout << "Interest earned: " << interest << endl;
     }
-}; 
 
-class Checking : public BankAccount{
-
-    public: 
-      double overdraftLimit;
-
-     void checkOverdraft(){
-        cout << " your Welcome" << endl;
-
-      }
-
-
-}; 
-
-class FixedDeposit : public BankAccount{
-
-    double term;
-
-    void calculateInterest(){
-
-
+    void displayAccountInfo() const override {
+        BankAccount::displayAccountInfo();
+        cout << "Interest Rate: " << interestRate << "%" << endl;
     }
 };
 
-int main(){
-     Saving obj;
+class CheckingAccount : public BankAccount {
+private:
+    double overdraftLimit;
 
-     obj.deposit();
-     obj.withdraw();
-     obj.getBalance();
-     obj.display();
-     obj.calculateInterest();
+public:
+    CheckingAccount(int accNum, string accHolderName, double initBalance, double overdraft)
+        : BankAccount(accNum, accHolderName, initBalance), overdraftLimit(overdraft) {}
 
-     Checking obj;
-    //  obj.checkOverdraf();
+    void withdraw(double amount) override {
+        if (amount <= balance + overdraftLimit) {
+            balance -= amount;
+            cout << "Withdrew: " << amount << ". New Balance: " << balance << endl;
+        } else {
+            cout << "Withdrawal exceeds overdraft limit!" << endl;
+        }
+    }
 
+    void displayAccountInfo() const override {
+        BankAccount::displayAccountInfo();
+        cout << "Overdraft Limit: " << overdraftLimit << endl;
+    }
+};
+
+class FixedDepositAccount : public BankAccount {
+private:
+    int term;
+    double interestRate; 
+
+public:
+    FixedDepositAccount(int accNum, string accHolderName, double initBalance, int duration, double rate)
+        : BankAccount(accNum, accHolderName, initBalance), term(duration), interestRate(rate) {}
+
+    void calculateInterest() {
+        double interest = balance * (interestRate / 100) * (term / 12.0);
+        cout << "Interest for " << term << " months: " << interest << endl;
+    }
+
+    void displayAccountInfo() const override {
+        BankAccount::displayAccountInfo();
+        cout << "Term: " << term << " months" << endl;
+        cout << "Interest Rate: " << interestRate << "%" << endl;
+    }
+};
+
+int main() {
+    SavingsAccount savings(01, "rohit", 5000.0, 3.5);
+    CheckingAccount checking(02, "virat", 2000.0, 500.0);
+    FixedDepositAccount fixedDeposit(03, "mohit", 10000.0, 12, 5.0);
+
+   
+    savings.displayAccountInfo();
+    savings.deposit(1000);
+    savings.withdraw(2000);
+    savings.getBalance();
+    savings.calculateInterest();
+    
+
+     cout << endl<< endl << " -------------------------------" << endl << endl;
+
+    checking.displayAccountInfo();
+    checking.deposit(500);
+    checking.withdraw(300);
+
+    cout << endl<< endl << " -------------------------------" << endl << endl;
+
+    fixedDeposit.displayAccountInfo();
+    fixedDeposit.calculateInterest();
+
+
+    return 0;
 }
