@@ -2,8 +2,9 @@
 using namespace std;
 
 
-int main()
-{
+void cal() {
+
+
   int choice , num1, num2 ;
   char continewchoice;
 
@@ -64,5 +65,10 @@ int main()
   } while (continewchoice == 'y'); 
 
   cout << "Program exit ! goodbye" << endl;
-};
 
+}
+
+int main (){
+    cal();
+    return  0;
+    }
