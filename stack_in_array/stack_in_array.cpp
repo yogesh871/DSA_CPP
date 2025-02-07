@@ -9,13 +9,13 @@ private:
 
 public:
     Stack(int size) {
-        arr = new int[size]; // Dynamic array allocation
+        arr = new int[size];
         capacity = size;
         top = -1;
     }
 
     ~Stack() {
-        delete[] arr; // Release dynamic memory
+        delete[] arr; 
     }
 
     void push(int value) {
