@@ -30,6 +30,7 @@ public:
         Node* new_node = new Node(data); // Dynamically allocate memory for new node
         new_node->next = head;           // Make the new node point to the current head
         head = new_node;                 // Update head to the new node
+        cout << "Node with value " << data << " inserted at the beginning." << endl;
     }
 
     // Method to search for a node with a specific value
@@ -122,35 +123,60 @@ public:
 // Main function
 int main() {
     DynamicMemoryAllocation list;
+    int choice, value;
 
-    // Insert some elements
-    list.insert_at_beginning(10);
-    list.insert_at_beginning(20);
-    list.insert_at_beginning(30);
-    list.insert_at_beginning(40);
+    do {
+        // Menu for CRUD operations
+        cout << "\nMenu:" << endl;
+        cout << "1. Insert at Beginning" << endl;
+        cout << "2. Search for an Element" << endl;
+        cout << "3. Delete a Node" << endl;
+        cout << "4. Reverse the List" << endl;
+        cout << "5. Display the List" << endl;
+        cout << "6. Exit" << endl;
+        cout << "Enter your choice: ";
+        cin >> choice;
 
-    // Display the list
-    cout << "Current List: ";
-    list.display();
+        switch (choice) {
+            case 1: // Insert at Beginning
+                cout << "Enter value to insert at the beginning: ";
+                cin >> value;
+                list.insert_at_beginning(value);
+                break;
 
-    // Search for an element
-    int search_value = 20;
-    if (list.search(search_value)) {
-        cout << "Element " << search_value << " found in the list." << endl;
-    } else {
-        cout << "Element " << search_value << " not found in the list." << endl;
-    }
+            case 2: // Search for an Element
+                cout << "Enter value to search: ";
+                cin >> value;
+                if (list.search(value)) {
+                    cout << "Element " << value << " found in the list." << endl;
+                } else {
+                    cout << "Element " << value << " not found in the list." << endl;
+                }
+                break;
 
-    // Delete a node
-    int delete_value = 30;
-    list.delete_node(delete_value);
-    cout << "List after deletion: ";
-    list.display();
+            case 3: // Delete a Node
+                cout << "Enter value to delete: ";
+                cin >> value;
+                list.delete_node(value);
+                break;
 
-    // Reverse the list
-    list.reverse();
-    cout << "Reversed List: ";
-    list.display();
+            case 4: // Reverse the List
+                list.reverse();
+                break;
+
+            case 5: // Display the List
+                cout << "Current List: ";
+                list.display();
+                break;
+
+            case 6: // Exit
+                cout << "Exiting..." << endl;
+                break;
+
+            default:
+                cout << "Invalid choice. Please try again." << endl;
+        }
+    } while (choice != 6);
 
     return 0;
 }
