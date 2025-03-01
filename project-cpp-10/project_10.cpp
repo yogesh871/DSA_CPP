@@ -1,17 +1,7 @@
 #include <iostream>
 using namespace std;
 
-void bubbleSort(int arr[], int n) {
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
-            if (arr[j] > arr[j + 1]) {
-                int temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-            }
-        }
-    }
-}
+
 
 void selectionSort(int arr[], int n) {
     for (int i = 0; i < n - 1; i++) {
@@ -80,14 +70,15 @@ int main() {
         cin >> choice;
 
         switch (choice) {
-            case 1:
-                bubbleSort(arr, n);
-                cout << "Array sorted using Bubble Sort." << endl;
-                break;
+            
 
-            case 2:
+            case 1:
                 selectionSort(arr, n);
                 cout << "Array sorted using Selection Sort." << endl;
+                break;
+
+                case 2:
+                cout << "Enter your array size " << endl;
                 break;
 
             case 3:
