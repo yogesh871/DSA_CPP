@@ -183,10 +183,11 @@ int main() {
         cout << " press 6 Sort an array using Merge Sort" << endl;
         cout << " press 7 Sort an array using Quick Sort" << endl;
         cout << " press 8 Binary Search in a sorted array" << endl;
-        
+
         cout << "0. Exit" << endl;
         cout << "Enter Your Choice ";
         cin >> choice;
+        
 
         switch (choice) {
             case 1:
