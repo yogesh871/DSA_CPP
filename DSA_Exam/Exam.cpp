@@ -1,260 +1,256 @@
-
-
-
-
 #include <iostream>
 using namespace std;
 
- class Node {
+struct Node {
     int data;
     Node* next;
     Node(int val) : data(val), next(nullptr) {}
 };
+
 
 class LinkedList {
 public:
     Node* head;
     LinkedList() : head(nullptr) {}
 
-
-void add(Node*& head, int value) {
-    Node* newNode = new Node{value, nullptr};
-    if (!head) {
-        head = newNode;
-    } else {
+    void add(int val) {
+        Node* newNode = new Node(val);
+        if (!head) {
+            head = newNode;
+            return;
+        }
         Node* temp = head;
         while (temp->next) temp = temp->next;
         temp->next = newNode;
     }
-}
-    
- void remove(Node*& head) {
-    int current =  this->head
-    int result = []
-      if (!current) {
+
+    void addElementPosition(int val, int pos) {
+        if (pos < 0) {
+            cout << "Invalid position!" << endl;
+            return;
+        }
+        Node* newNode = new Node(val);
+        if (pos == 0) {
+            newNode->next = head;
             head = newNode;
-            return; 
+            return;
         }
-        while (current)
-        {
-            result =  result + current->next
-            current->Node = newNode
-        }
-        current->next = nullptr
-}
-
-
-void addStart(Node*& head, int value) {
-    Node* newNode = new Node
-    {value, head};
-
-    head = newNode;
-}
-
-
-void  addElePosition(Node*& head, int value, int pos) {
-    if (pos < 1) {
-        cout << "Invelid position" << endl;
-        return;
-    }
-    if (pos == 1) {
-        insertAtBeginning(head, value);
-        return;
-    }
-
-    Node* temp = head;
-    for (int i = 1; temp && i < pos - 1; i++)
-        temp = temp->next;
-
-    if (!temp) {
-        cout << "Position out of range!" << endl;
-        return;
-    }
-
-    Node* newNode = new Node{value, temp->next};
-    temp->next = newNode;
-    cout <<  pos <<  endl;
-}
-
-void  removeElePosition(Node*& head, int value) {
-    if (!head) {
-        return;
-    }
-    if (head->data == value) {
         Node* temp = head;
-        head = head->next;
-        delete temp;
-        cout  << value  << endl;
-        return;
-    }
-    Node* temp = head;
-    while (temp->next && temp->next->data != value)
-        temp = temp->next;
-
-    if (!temp->next) {
-        cout << "Value not found!" << endl;
-        return;
+        for (int i = 0; temp && i < pos - 1; i++) {
+            temp = temp->next;
+        }
+        if (!temp) {
+            cout << "Position out of range!" << endl;
+            return;
+        }
+        newNode->next = temp->next;
+        temp->next = newNode;
     }
 
-    Node* delNode = temp->next;
-    temp->next = temp->next->next;
-    delete delNode;
-    cout  << value << endl;
-} 
 
-
- void dispaly() {
-   if (!head) {
-        cout << "linked list is empty!" << endl;
-        return;
-    }
-    else {
+    void remove(int key) {
+        if (!head) {
+            cout << "List is empty!" << endl;
+            return;
+        }
+        if (head->data == key) {
+            Node* temp = head;
+            head = head->next;
+            delete temp;
+            return;
+        }
         Node* temp = head;
-        int result = [];
-        while (temp->next)
-         temp = temp->next;
-         result = result.add(temp.vaule)
-        temp->next = newNode; 
-    }
-}
-
-
-void merge (int start, int mid, int end) {
-    int start  = 0;
-    int end = result.length;
-    int mid =  result.length/2
-    
-for (i = start; i< mid i++) {
-      result[i]
-}
-int left =  result[i] + " ";
-
-for (j = mid; j < result.length j++) {
-     result[j]
-}
-int right =  result[j] + " ";
-
-// cout << left << endl;
-// cout << right << endl;
-
-}
-
-void mergeSort(int left, int right){
-
-    for(i = 0; i < result.length; i++){
-       int answer = []
-       for (j = i + 1; j < result.length; j++)
-       {
-          if(result[i] < result[j]){
-               answer += result[i]
-          } else (result[i] > result[j]) {
-            answer += result[j]
-          }
-       }
-    }
-    cout << " your sorted linklist using merge sort is : " << answer << endl;
-}
-
-
-void QueckSort(int result){
-    int pivot =  result[0]
-    int Que = []
-
-    for (i = 0; i < result.length; i++){
-        if(pivot < result[i]){
-            Que += pivot
+        while (temp->next && temp->next->data != key) temp = temp->next;
+        if (!temp->next) {
+            cout << "Element not found!" << endl;
+            return;
         }
-        cout << Que << endl;
-        else (pivot > result[i]) {
-            Que += result [i]
-        }
+        Node* toDelete = temp->next;
+        temp->next = temp->next->next;
+        delete toDelete;
+    }
 
+   
+    void removeElementPosition(int pos) {
+        if (!head) {
+            cout << "List is empty!" << endl;
+            return;
+        }
+        if (pos < 0) {
+            cout << "Invalid position!" << endl;
+            return;
+        }
+        if (pos == 0) {
+            Node* temp = head;
+            head = head->next;
+            delete temp;
+            return;
+        }
+        Node* temp = head;
+        for (int i = 0; temp->next && i < pos - 1; i++) {
+            temp = temp->next;
+        }
+        if (!temp->next) {
+            cout << "Position out of range!" << endl;
+            return;
+        }
+        Node* toDelete = temp->next;
+        temp->next = temp->next->next;
+        delete toDelete;
+    }
+
+
+    void display() {
+        if (!head) {
+            cout << "List is empty!" << endl;
+            return;
+        }
+        Node* temp = head;
+        while (temp) {
+            cout << temp->data << " -> ";
+            temp = temp->next;
+        }
+        cout << "NULL" << endl;
+    }
+};
+
+void merge(int arr[], int left, int mid, int right) {
+    int n1 = mid - left + 1, n2 = right - mid;
+    int* L = new int[n1];
+    int* R = new int[n2];
+    for (int i = 0; i < n1; i++) L[i] = arr[left + i];
+    for (int i = 0; i < n2; i++) R[i] = arr[mid + 1 + i];
+    int i = 0, j = 0, k = left;
+    while (i < n1 && j < n2) arr[k++] = (L[i] <= R[j]) ? L[i++] : R[j++];
+    while (i < n1) arr[k++] = L[i++];
+    while (j < n2) arr[k++] = R[j++];
+    delete[] L;
+    delete[] R;
+}
+
+void mergeSort(int arr[], int left, int right) {
+    if (left < right) {
+        int mid = left + (right - left) / 2;
+        mergeSort(arr, left, mid);
+        mergeSort(arr, mid + 1, right);
+        merge(arr, left, mid, right);
     }
 }
 
-void binary_Serch() {
 
+int partition(int arr[], int low, int high) {
+    int pivot = arr[high];
+    int i = low - 1;
+    for (int j = low; j < high; j++) {
+        if (arr[j] < pivot) swap(arr[++i], arr[j]);
+    }
+    swap(arr[i + 1], arr[high]);
+    return i + 1;
 }
 
+void quickSort(int arr[], int low, int high) {
+    if (low < high) {
+        int pi = partition(arr, low, high);
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
 }
 
 
-int main () {
-    do { 
-        cout << "Linklist Menu " << endl;
-        cout << "press 1 for add element in linklist end position " << endl;
-        cout << "press 2 for remove element in linklist end position" << endl;
-        cout << "press 3 for add element in linklist any position " << endl;
-        cout << "press 4 for remove element in linklist any position " << endl;
-        cout << "press 5 for display linklist" << endl;
-        cout << "press 6 for sorting linklist using Merge sort" << endl;
-        cout << "press 7 for sorting linklilst using Queck sort" << endl;
-        cout << "press 8 for binary search" << endl;
-        cout << "press 0 for Exit" << endl;
-
-        cout << "Enter Your Choice " << endl;
-        cin >> choice
+int binarySearch(int arr[], int left, int right, int target) {
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (arr[mid] == target) return mid;
+        else if (arr[mid] < target) left = mid + 1;
+        else right = mid - 1;
+    }
+    return -1;
+}
 
 
-        switch (choice){
-         int list = new LinkedList()
+int main() {
+    LinkedList list;
+    int choice, value, position, n, target;
+    int* arr = nullptr;
 
-        case 1 ;
-              cout << "Enter your Element " << endl;
-              cin >> value;
-              list add();
-            break;
-
-        case 2 ;
-              list.remove();
-            break;
+    do {
+        cout << endl << "Menu:" << endl;
+        cout << " press 1 for add element into Linked List" << endl;
+        cout << " press 2 for remove element from Linked List " << endl;
+        cout << " press 3 add element at Position in Linked List" << endl;
+        cout << " press 4 remove element from Position in Linked List" << endl;
+        cout << " press 5 Display Linked List" << endl;
+        cout << " press 6 Sort an array using Merge Sort" << endl;
+        cout << " press 7 Sort an array using Quick Sort" << endl;
+        cout << " press 8 Binary Search in a sorted array" << endl;
         
-        case 3 ;
-          cout << "Enter Your position" << endl;
-          cin >> pos;
-          cout << "Enter Your element" << endl;
-          cin >> value;
+        cout << "0. Exit" << endl;
+        cout << "Enter Your Choice ";
+        cin >> choice;
 
-          list.addElePosition ()
-        break;
-
-        case 4 ;
-           cout << "Enter Your Position" << endl;
-           cin >> pos;
-           cout << "Enter Your Element" << endl;
-           cin >> value
-
-           list.removeElePosition();
-            break;
-
-        case 5 ;
-              list.dispaly()
-            break;
-
-        case 6 ;
-              cout << "your linklist sorted by merge sort " << endl;
-             list.mergeSort();
-            break;
-
-        case 7 ;
-            cout << "your linklist sorted by Queck sort"  << endl;
-           list.QueckSort ();
-
-            break;
-        case 8 ;
-             cout << "Your searching element is " << endl;
-             list.binary_Serch();
-            break;
-        case 0 ;
-            break;
-        
-        default:
-         cout << "Enter valid choice" << endl;
-            break;
+        switch (choice) {
+            case 1:
+                cout << "Enter value to insert: ";
+                cin >> value;
+                list.add(value);
+                break;
+            case 2:
+                cout << "Enter value to delete: ";
+                cin >> value;
+                list.remove(value);
+                break;
+            case 3:
+                cout << "Enter value and position: ";
+                cin >> value >> position;
+                list.addElementPosition(value, position);
+                break;
+            case 4:
+                cout << "Enter position to delete: ";
+                cin >> position;
+                list.removeElementPosition(position);
+                break;
+            case 5:
+                list.display();
+                break;
+            case 6:
+                cout << "Enter array size : ";
+                cin >> n;
+                arr = new int[n];
+                cout << "Enter elements: ";
+                for (int i = 0; i < n; i++) cin >> arr[i];
+                mergeSort(arr, 0, n - 1);
+                cout << "Sorted array using Merge Sort: ";
+                for (int i = 0; i < n; i++) cout << arr[i] << " ";
+                cout << endl;
+                break;
+            case 7:
+                cout << "Enter array size: ";
+                cin >> n;
+                arr = new int[n];
+                cout << "Enter elements: ";
+                for (int i = 0; i < n; i++) cin >> arr[i];
+                quickSort(arr, 0, n - 1);
+                cout << "Sorted array using Quick Sort: ";
+                for (int i = 0; i < n; i++) cout << arr[i] << " ";
+                cout << endl;
+                break;
+            case 8:
+                if (!arr) {
+                    cout << "Array not initialized or sorted!" << endl;
+                    break;
+                }
+                cout << "Enter target value to search: ";
+                cin >> target;
+                break;
+            case 0:
+                cout << "Exit" << endl;
+                break;
+            default:
+                cout << "Invalid choice" << endl;
         }
+    } while (choice != 0);
 
-    }( choice != 0 )
-    
+  
+    delete[] arr;
+    return 0;
 }
-
-
