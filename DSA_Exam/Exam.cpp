@@ -26,7 +26,7 @@ public:
 
     void addElementPosition(int val, int pos) {
         if (pos < 0) {
-            cout << "Invalid position!" << endl;
+            cout << "Invalid position" << endl;
             return;
         }
         Node* newNode = new Node(val);
@@ -40,7 +40,7 @@ public:
             temp = temp->next;
         }
         if (!temp) {
-            cout << "Position out of range!" << endl;
+            cout << "Position out of range" << endl;
             return;
         }
         newNode->next = temp->next;
@@ -115,17 +115,17 @@ public:
 };
 
 void merge(int arr[], int left, int mid, int right) {
-    int n1 = mid - left + 1, n2 = right - mid;
-    int* L = new int[n1];
-    int* R = new int[n2];
-    for (int i = 0; i < n1; i++) L[i] = arr[left + i];
-    for (int i = 0; i < n2; i++) R[i] = arr[mid + 1 + i];
+    int num1 = mid - left + 1, num2 = right - mid;
+    int* Leftside = new int[num1];
+    int* Rightside = new int[num2];
+    for (int i = 0; i < num1; i++) Leftside[i] = arr[left + i];
+    for (int i = 0; i < num2; i++) Rightside[i] = arr[mid + 1 + i];
     int i = 0, j = 0, k = left;
-    while (i < n1 && j < n2) arr[k++] = (L[i] <= R[j]) ? L[i++] : R[j++];
-    while (i < n1) arr[k++] = L[i++];
-    while (j < n2) arr[k++] = R[j++];
-    delete[] L;
-    delete[] R;
+    while (i < num1 && j < num2) arr[k++] = (Leftside[i] <= Rightside[j]) ? Leftside[i++] : Rightside[j++];
+    while (i < num1) arr[k++] = Leftside[i++];
+    while (j < num2) arr[k++] = Rightside[j++];
+    delete[] Leftside;
+    delete[] Rightside;
 }
 
 void mergeSort(int arr[], int left, int right) {
@@ -183,8 +183,7 @@ int main() {
         cout << " press 6 Sort an array using Merge Sort" << endl;
         cout << " press 7 Sort an array using Quick Sort" << endl;
         cout << " press 8 Binary Search in a sorted array" << endl;
-
-        cout << "0. Exit" << endl;
+        cout << " press 0 Exit Program " << endl;
         cout << "Enter Your Choice ";
         cin >> choice;
         
@@ -219,6 +218,7 @@ int main() {
                 arr = new int[n];
                 cout << "Enter elements: ";
                 for (int i = 0; i < n; i++) cin >> arr[i];
+
                 mergeSort(arr, 0, n - 1);
                 cout << "Sorted array using Merge Sort: ";
                 for (int i = 0; i < n; i++) cout << arr[i] << " ";
@@ -230,19 +230,18 @@ int main() {
                 arr = new int[n];
                 cout << "Enter elements: ";
                 for (int i = 0; i < n; i++) cin >> arr[i];
+
                 quickSort(arr, 0, n - 1);
                 cout << "Sorted array using Quick Sort: ";
                 for (int i = 0; i < n; i++) cout << arr[i] << " ";
                 cout << endl;
                 break;
+
             case 8:
-                if (!arr) {
-                    cout << "Array not initialized or sorted!" << endl;
-                    break;
-                }
                 cout << "Enter target value to search: ";
                 cin >> target;
                 break;
+
             case 0:
                 cout << "Exit" << endl;
                 break;
