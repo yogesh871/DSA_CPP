@@ -24,6 +24,10 @@ public:
         temp->next = newNode;
     }
 
+//  output =   11 -> 12 -> 13 -> 14 -> 15 -> NULL
+
+
+
     void addElementPosition(int val, int pos) {
         if (pos < 0) {
             cout << "Invalid position" << endl;
@@ -47,6 +51,8 @@ public:
         temp->next = newNode;
     }
 
+//  output = 11 -> 12 -> 13 -> 14 -> NULL
+
 
     void remove(int key) {
         if (!head) {
@@ -69,6 +75,11 @@ public:
         temp->next = temp->next->next;
         delete toDelete;
     }
+
+//  value =  16
+// position =  3
+// output = 11 -> 12 -> 16 -> 13 -> 14 -> NULL
+  
 
    
     void removeElementPosition(int pos) {
@@ -99,6 +110,8 @@ public:
         delete toDelete;
     }
 
+// position deleted =  2 
+//  output =  11 -> 12 -> 13 -> 14 -> NULL
 
     void display() {
         if (!head) {
@@ -113,6 +126,7 @@ public:
         cout << "NULL" << endl;
     }
 };
+//  output =  11 -> 12 -> 13 -> 14 -> 15 -> NULL
 
 void merge(int arr[], int left, int mid, int right) {
     int num1 = mid - left + 1, num2 = right - mid;
@@ -125,8 +139,15 @@ void merge(int arr[], int left, int mid, int right) {
     while (i < num1) arr[k++] = Leftside[i++];
     while (j < num2) arr[k++] = Rightside[j++];
     delete[] Leftside;
-    delete[] Rightside;
+    delete[] Rightside; 
 }
+
+
+//  array size =  5
+// array element = [ 23 , 43, 25, 76, 75 ]
+
+// Sorted array using Merge Sort: 23 25 43 75 76 
+
 
 void mergeSort(int arr[], int left, int right) {
     if (left < right) {
@@ -155,6 +176,10 @@ void quickSort(int arr[], int low, int high) {
         quickSort(arr, pi + 1, high);
     }
 }
+
+//  array size =  5
+// array element =  [12, 34, 65, 98, 27]
+// Sorted array using Quick Sort :  12 27 34 65 98 
 
 
 int binarySearch(int arr[], int left, int right, int target) {
